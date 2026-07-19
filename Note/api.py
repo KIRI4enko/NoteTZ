@@ -30,3 +30,4 @@ def get_note(request, note_id: int):
         raise HttpError(404, f"Заметка с id {note_id} не найдена")
         
     return note
+
