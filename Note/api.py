@@ -8,6 +8,7 @@ note_service = NoteService()
 
 @router.post("/", response={201: NoteOut})
 def create_note(request, data: NoteCreate):
+    """Создание заметки по заголовку, тексту [и тегам]"""
     note = note_service.create_note(
         title=data.title, 
         text=data.text, 
@@ -17,6 +18,7 @@ def create_note(request, data: NoteCreate):
 
 @router.get("/", response=list[NoteOut])
 def list_notes(request, tag: str = None, search: str = None):
+    """Получение заметок [с фильтром по тегам и словам]"""
     return note_service.get_notes_list(tag=tag, search=search) 
 
 @router.get("/{note_id}", response=NoteOut)
