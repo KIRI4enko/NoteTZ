@@ -25,7 +25,7 @@ services:
       - DB_PASSWORD=${DATABASES_PASSWORD}
       - DB_HOST=db 
       - DB_PORT=5432
-    
+      - DJANGO_SETTINGS_MODULE=NoteTZ.settings
     depends_on:
       - db
 
