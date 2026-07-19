@@ -13,7 +13,6 @@ class NoteOut(Schema):
     title: str
     text: str
     created_at: datetime
-    updated_at: datetime
     tags: list[TagOut]  
 
 

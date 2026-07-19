@@ -8,7 +8,7 @@ class NoteService:
         self.note_repo = NoteRepository()
         self.tag_repo = TagRepository()
 
-    def create_note(self, title: str, text: str, tag_names: list[str]) -> Note:
+    def create_note(self, title: str, text: str, tag_names: list[str] | None = None) -> Note:
         """
         1. Найти или создать теги.
         2. Создать саму заметку.
@@ -16,7 +16,7 @@ class NoteService:
         """
         with transaction.atomic():
             # 1. Работаем с тегами
-            tags = self.tag_repo.get_or_create_tags(tag_names)
+            tags = self.tag_repo.get_or_create_tags(tag_names or [])
             
             # 2. Создаем заметку
             note = self.note_repo.create(title=title, text=text)
